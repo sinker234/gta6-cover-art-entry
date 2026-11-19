@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast Cover Studio</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app" id="app">
+  <aside class="controls">
+    <h1>Neon Coast <span>Cover Studio</span></h1>
+    <p class="tag">Turn any photos into a multi-panel neon-sunset cover. Everything stays on your machine.</p>
+
+    <section class="group">
+      <h2>1 · Photos</h2>
+      <label class="drop" id="drop">Drop photos here or
+        <input id="fileInput" type="file" accept="image/*" multiple>
+      </label>
+      <div class="thumbs" id="thumbs"></div>
+      <p class="hint">Click a cover panel, then click a photo to put it in that panel. Drag on the cover to pan.</p>
+    </section>
+
+    <section class="group">
+      <h2>2 · Layout &amp; grade</h2>
+      <label>Layout <select id="layoutSel"></select></label>
+      <label>Grade <select id="gradeSel"></select></label>
+      <label>Panel photo <select id="panelPhotoSel"></select></label>
+      <label>Panel zoom <input id="zoom" type="range" min="1" max="3" step="0.01" value="1"></label>
+      <label>Saturation <input id="sat" type="range" min="0.2" max="2" step="0.01" value="1"></label>
+      <label>Contrast <input id="con" type="range" min="0.5" max="1.8" step="0.01" value="1"></label>
+      <label class="check"><input id="grain" type="checkbox" checked> Film grain</label>
+      <label class="check"><input id="vignette" type="checkbox" checked> Vignette</label>
+    </section>
+
+    <section class="group">
+      <h2>3 · Lettering</h2>
+      <label>Title <input id="titleInput" type="text" maxlength="24" value="NEON COAST"></label>
+      <label>Subtitle <input id="subtitleInput" type="text" maxlength="30" value="Vice Nights"></label>
+      <label>Caption <input id="captionInput" type="text" maxlength="40" value="Sunset Heist"></label>
+      <label>Badge <input id="badgeInput" type="text" maxlength="16" value="LAUNCH WEEK"></label>
+      <label>Title size <input id="titleSize" type="range" min="0.6" max="1.4" step="0.01" value="1"></label>
+      <label>Heat meter
+        <select id="heatSel"><option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option></select>
+      </label>
+    </section>
+
+    <section class="group">
+      <h2>4 · Export PNG</h2>
+      <label>Size
+        <select id="sizeSel">
+          <option value="1080x1080" selected>1080 × 1080 — square post</option>
+          <option value="1080x1350">1080 × 1350 — portrait post</option>
+          <option value="1920x1080">1920 × 1080 — wide / landscape</option>
+        </select>
+      </label>
+      <button id="exportBtn" type="button">Export PNG</button>
+      <p id="status" role="status"></p>
+    </section>
+  </aside>
+  <section class="stage">
+    <canvas id="cover" width="1080" height="1080" aria-label="Cover preview"></canvas>
+    <p class="hint" id="panelHint">Panel 1 selected — drag to pan, scroll to zoom.</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
