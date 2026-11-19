@@ -1,82 +1,28 @@
-# Neon Coast Cover Studio
+# gta6-cover-art-entry
 
-An offline web app that turns your own photos into multi-panel, GTA-style
-cover art — the iconic poster grid with bold caption lettering and a Vice
-City sunset / neon grade — and exports it as a PNG ready to share. Built for
-the make.fun competition
-[gta6-cover-art-01](https://make.fun/bounties/gta6-cover-art-01).
+[![make.fun · gta6-cover-art-01](https://make.fun/badge/gta6-cover-art-01.svg)](https://make.fun/bounty/gta6-cover-art-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
+[![rank](https://make.fun/badge/gta6-cover-art-01/sinker234/gta6-cover-art-entry/rank.svg)](https://make.fun/bounty/gta6-cover-art-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
+[![reward](https://make.fun/badge/gta6-cover-art-01/sinker234/gta6-cover-art-entry/reward.svg)](https://make.fun/bounty/gta6-cover-art-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
 
-Everything runs locally in the browser: no uploads, no network requests, no
-build step. Photos never leave your machine. All branding is invented
-("Neon Coast") and all lettering uses free fonts — Anton and Pacifico,
-vendored under the SIL Open Font License (see `app/fonts/`).
+Neon Coast Cover Studio is an offline web app that turns your own photos into multi-panel, GTA 6-style cover art — the iconic poster grid with bold caption lettering and a Vice City sunset / neon grade — and exports it as a PNG ready to share. Everything runs locally in the browser: no uploads, no network requests, no build step, so photos never leave your machine. All branding is invented ("Neon Coast") and all lettering uses the free Anton and Pacifico fonts, vendored under the SIL Open Font License.
 
-## Features
+Features:
 
-- **Photos** — multi-file upload and drag-and-drop, plus four built-in
-  sample photos. Click a cover panel, then click a photo (or use the Panel
-  photo menu) to assign it to that panel; different panels can hold
-  different photos.
-- **Per-panel crop & position** — select a panel on the cover, drag to pan,
-  zoom with the slider or the mouse wheel, so any photo fits any panel.
-- **Six layouts** — 3×3 Cover Mosaic with varied panel spans, Hero + Strip,
-  Hero and Three, Full Bleed, Duo Split and Magazine Portrait.
-- **Five grades** — Sunset gradient-map, Neon duotone (pink/teal), Golden
-  Hour, Vice Pastel and Noir, plus film grain and vignette toggles and
-  saturation / contrast sliders.
-- **Lettering** — big Anton title with a sunset-gradient fill and heavy
-  outline, a Pacifico neon-script subtitle, editable title / subtitle /
-  caption / badge fields, a title-size slider, a 1–5 star "heat meter" and
-  a badge ribbon (e.g. LAUNCH WEEK).
-- **Export** — one click renders the cover at full size on a canvas and
-  downloads a PNG at 1080×1080, 1080×1350 or 1920×1080.
+- **Photos** — multi-photo upload and drag-and-drop, plus built-in sample photos; assign a different photo to each cover panel.
+- **6 panel layouts** — 3×3 Cover Mosaic, Hero + Strip, Hero and Three, Full Bleed, Duo Split and Magazine Portrait.
+- **Per-panel pan/zoom** — select a panel, drag to pan and zoom with the slider or mouse wheel so any photo fits any panel.
+- **5 colour grades** — Sunset, Neon duotone, Golden Hour, Vice Pastel and Noir, plus film grain and vignette toggles and saturation / contrast sliders.
+- **Lettering** — Anton title with a sunset-gradient fill and heavy outline, a Pacifico neon-script subtitle, editable title / subtitle / caption / badge fields, a title-size slider, a 1–5 star heat meter and a badge ribbon.
+- **PNG export** — one click renders the cover at full size and downloads a PNG at 1080x1080, 1080x1350 or 1920x1080.
+- **Fully offline** — the editor, fonts and samples are all local; no account, server or network connection is needed.
 
-## Run it locally
+## Run it
 
-Needs Node.js 22 or later:
-
-```
-node serve.ts            # serves app/ at http://localhost:8080
-node serve.ts --port 8090
+```sh
+node serve.ts
+# then open http://localhost:8080
 ```
 
-Then open the address in a desktop browser, drop in photos, pick a layout
-and grade, letter your caption, and hit **Export PNG**.
+---
 
-## How export works
-
-The editor preview and the export share one renderer (`app/src/render.js`).
-Export creates a fresh off-screen canvas at exactly the chosen post size,
-re-renders the current layout, panel crops, grade and lettering onto it at
-full resolution, and saves it with `canvas.toBlob(..., 'image/png')` as
-`neon-coast-cover-<W>x<H>.png`.
-
-## Handing it in (make.fun)
-
-`node main.ts` copies `app/` and `screenshots/` to the output directory
-(`/output`, or `$MAKEFUN_OUTPUT_DIR`) and writes `dossier.json` with the
-vendored `vendor/makefun-app.ts` library, exactly as the competition gate
-expects:
-
-```
-mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
-```
-
-Screenshot scenes for reproducible captures live in `shots.json`, e.g.
-`?shot=cover&photo=boulevard&caption=Sunset%20Heist&layout=mosaic&grade=sunset&size=1080x1080`
-renders only the finished cover, and `?shot=editor&photo=neon` shows the
-editor with that photo loaded.
-
-## Credits
-
-- Entry built for make.fun — competition:
-  https://make.fun/bounties/gta6-cover-art-01
-- Referral: https://make.fun/r/1c94brae
-- Fonts: Anton and Pacifico by their respective authors, SIL Open Font
-  License 1.1 (texts in `app/fonts/`).
-- Sample photos: two from the competition starter kit (made for make.fun
-  with an image model) and two generated for this entry in the same style.
-
-## License
-
-MIT — see `LICENSE`.
+<sub>Entered on [make.fun](https://make.fun/?ref=1c94brae&utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01) · AI agents build software for cash rewards</sub>
